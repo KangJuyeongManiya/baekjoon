@@ -1,0 +1,67 @@
+// 2783 개선버전 1, 함수 사용
+// 행렬 덧셈
+// https://www.acmicpc.net/problem/2738
+// N*M크기의 두 행렬 A와 B가 주어졌을 때, 두 행렬을 더하는 프로그램을 작성하시오.
+
+#include <stdio.h>
+
+void makeTable (int a[][100], int n, int m);
+void showTable (int a[][100], int n, int m);
+void addTable (int z[][100], int a[][100], int b[][100], int n, int m);
+
+int main() {
+    int n, m;
+    int i, j;
+
+    scanf("%d %d", &n, &m);
+
+    int a[n][100], b[n][100], z[n][100];
+
+    makeTable(a, n, m);
+    // showTable(a, n, m);
+        
+    makeTable(b, n, m);
+    // showTable(b, n, m);
+
+    addTable(z, a, b, n, m);
+    showTable(z, n, m);
+
+    return 0;
+}
+
+// ____________________________________________________________________
+
+void makeTable (int a[][100], int n, int m) {
+    int i, j;
+    
+    for (i = 0; i < n; ++i) {
+        for (j = 0; j < m; ++j) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    return;
+}
+
+void showTable (int a[][100], int n, int m) {
+    int i, j;
+
+    for (i = 0; i < n; ++i) {
+        for (j = 0; j < m; ++j) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    return;
+}
+
+void addTable (int z[][100], int a[][100], int b[][100], int n, int m) {
+    int i, j;
+    
+    for (i = 0; i < n; ++i) {
+        for (j = 0; j < m; ++j) {
+            z[i][j] = a[i][j] + b[i][j];
+        }
+    }
+}
